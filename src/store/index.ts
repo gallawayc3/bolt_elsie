@@ -17,6 +17,10 @@ export const useSimulationStore = create<SimulationState>((set, get) => ({
     try {
       const { scenarioRequest, pdfContent } = get();
       
+      if (!scenarioRequest.trim()) {
+        throw new Error('Please provide a scenario request');
+      }
+
       const messages = [
         {
           role: "system",
@@ -38,11 +42,16 @@ export const useSimulationStore = create<SimulationState>((set, get) => ({
         content: scenarioRequest
       });
 
+      const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
+      if (!apiKey) {
+        throw new Error('OpenAI API key is not configured');
+      }
+
       const response = await fetch('https://api.openai.com/v1/chat/completions', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${import.meta.env.VITE_OPENAI_API_KEY}`
+          'Authorization': `Bearer ${apiKey}`
         },
         body: JSON.stringify({
           model: "gpt-4",
@@ -57,7 +66,12 @@ export const useSimulationStore = create<SimulationState>((set, get) => ({
       });
 
       if (!response.ok) {
-        throw new Error(`API request failed with status: ${response.status}`);
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(
+          `API request failed with status: ${response.status}${
+            errorData.error?.message ? ` - ${errorData.error.message}` : ''
+          }`
+        );
       }
 
       const data = await response.json();

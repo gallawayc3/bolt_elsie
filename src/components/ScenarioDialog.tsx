@@ -1,8 +1,13 @@
 import * as Dialog from '@radix-ui/react-dialog';
 import { X } from 'lucide-react';
 import InputForm from './InputForm';
+import LoadingScreen from './LoadingScreen';
+import ScenarioOutput from './ScenarioOutput';
+import { useSimulationStore } from '../store';
 
 const ScenarioDialog = () => {
+  const { loading, scenario, error } = useSimulationStore();
+
   return (
     <Dialog.Root>
       <Dialog.Trigger asChild>
@@ -23,7 +28,9 @@ const ScenarioDialog = () => {
             </Dialog.Close>
           </div>
           
-          <InputForm />
+          {loading && <LoadingScreen />}
+          {!loading && !error && !scenario && <InputForm />}
+          {!loading && !error && scenario && <ScenarioOutput />}
         </Dialog.Content>
       </Dialog.Portal>
     </Dialog.Root>

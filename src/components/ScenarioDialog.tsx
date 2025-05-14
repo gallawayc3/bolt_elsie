@@ -30,20 +30,7 @@ const ScenarioDialog = () => {
           
           {loading && <LoadingScreen />}
           {!loading && !error && !scenario && <InputForm />}
-          {!loading && !error && scenario && (
-            <div className="flex flex-col gap-4">
-              <ScenarioOutput />
-              <button 
-                onClick={() => {
-                  // TODO: Implement populating the form with AI generated data
-                  console.log("Populate form with:", scenario);
-                }}
-                className="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors"
-              >
-                Use in Form
-              </button>
-            </div>
-          )}
+          {!loading && !error && scenario && <ScenarioOutput />}
         </Dialog.Content>
       </Dialog.Portal>
     </Dialog.Root>

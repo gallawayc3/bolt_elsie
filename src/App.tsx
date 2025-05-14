@@ -1,10 +1,10 @@
 import React from 'react';
 import { useSimulationStore } from './store';
 import Header from './components/Header';
-import InputForm from './components/InputForm';
 import LoadingScreen from './components/LoadingScreen';
 import ScenarioOutput from './components/ScenarioOutput';
 import ErrorDisplay from './components/ErrorDisplay';
+import ScenarioDialog from './components/ScenarioDialog';
 
 function App() {
   const { loading, scenario, error } = useSimulationStore();
@@ -18,7 +18,17 @@ function App() {
         
         {error && <ErrorDisplay />}
         
-        {!loading && !error && !scenario && <InputForm />}
+        {!loading && !error && !scenario && (
+          <div className="flex flex-col items-center justify-center min-h-[60vh]">
+            <h1 className="text-4xl font-bold text-gray-800 mb-6 text-center">
+              Welcome to ELSiE Scenario Generator
+            </h1>
+            <p className="text-xl text-gray-600 mb-8 text-center max-w-2xl">
+              Create detailed, AI-powered educational scenarios for immersive learning experiences
+            </p>
+            <ScenarioDialog />
+          </div>
+        )}
         
         {!loading && !error && scenario && <ScenarioOutput />}
       </main>

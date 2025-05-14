@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Form, Button } from '@/components'
+import { Form, Button } from '../ui'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
@@ -13,7 +13,7 @@ import { ScenarioDetailForm } from './scenario-form-detail'
 import { useToast } from '@/hooks/use-toast'
 import { AdvancedSettings } from './advanced-settings'
 import { ScenarioResourcesForm } from './scenario-resources/scenario-form-resources'
-import { openScenarioInstancePreviewLink } from 'elsie-shared/lib/utils'
+import { openScenarioInstancePreviewLink } from '../../lib/utils'
 import { getPublicConfig } from 'elsie-shared'
 
 const STEP_FIELD_MAP = {

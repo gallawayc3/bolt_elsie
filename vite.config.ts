@@ -6,6 +6,13 @@ import path from 'path';
 export default defineConfig({
   plugins: [react()],
   optimizeDeps: {
+    include: [
+      '@hookform/resolvers/zod',
+      'react-router-dom',
+      'elsie-shared',
+      '@stepperize/react',
+      'sonner'
+    ],
     exclude: ['lucide-react'],
   },
   resolve: {

@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from './components/Header';
+import ScenarioForm from './components/scenario-form/scenario-form';
 import ScenarioDialog from './components/ScenarioDialog';
 
 function App() {
@@ -8,7 +9,7 @@ function App() {
       <Header />
       
       <main className="max-w-6xl mx-auto py-8 px-4">
-        <div className="flex flex-col items-center justify-center min-h-[60vh]">
+        <div className="flex flex-col items-center justify-center mb-8">
           <h1 className="text-4xl font-bold text-gray-800 mb-6 text-center">
             Welcome to ELSiE Scenario Generator
           </h1>
@@ -16,6 +17,10 @@ function App() {
             Create detailed, AI-powered educational scenarios for immersive learning experiences
           </p>
           <ScenarioDialog />
+        </div>
+        
+        <div className="mt-8">
+          <ScenarioForm formValues={{}} isEdit={false} />
         </div>
       </main>
       

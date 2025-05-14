@@ -8,9 +8,9 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from 'elsie-shared/components/ui/dialog'
+} from '../../components/ui/dialog'
 import { apiClient } from '@/lib/api-client'
-import { Form, Button, Label } from '@/components'
+import { Form, Button, Label } from '../../components/ui'
 import { toast } from 'sonner'
 
 export const PromptDialog = ({ promptName, promptId, promptInputs }) => {

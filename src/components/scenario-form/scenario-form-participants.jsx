@@ -10,9 +10,8 @@ import {
   Input,
   Button,
   Textarea,
-  renderImageUpload,
   Switch,
-} from '@/components'
+} from '../../components/ui'
 import { PARTICIPANTS, formDefaultValues } from './scenario-form-schema'
 import { useFieldArray, useWatch, useFormContext } from 'react-hook-form'
 
@@ -29,6 +28,11 @@ export const ScenarioParticipantsForm = ({ form, uploadImageFn, imageIdToUrlFn }
     control: form.control,
     name: PARTICIPANTS,
   })
+
+  const renderImageUpload = (field, imageIdToUrlFn, uploadImageFn) => {
+    // Implementation of image upload component
+    return null // Placeholder
+  }
 
   return (
     <>

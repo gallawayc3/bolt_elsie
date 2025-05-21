@@ -1,5 +1,5 @@
 {
-  "name": "elsie-scenario-generator",
+  "name": "vite-react-typescript-starter",
   "private": true,
   "version": "0.1.0",
   "type": "module",
@@ -10,20 +10,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@radix-ui/react-dialog": "^1.0.5",
+    "@tailwindcss/typography": "^0.5.10",
     "lucide-react": "^0.344.0",
-    "openai": "^4.28.0",
-    "pdf-parse": "^1.1.1",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-syntax-highlighter": "^15.5.0",
-    "zustand": "^4.5.2"
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.1",
     "@types/react": "^18.3.5",
     "@types/react-dom": "^18.3.0",
-    "@types/react-syntax-highlighter": "^15.5.11",
     "@vitejs/plugin-react": "^4.3.1",
     "autoprefixer": "^10.4.18",
     "eslint": "^9.9.1",

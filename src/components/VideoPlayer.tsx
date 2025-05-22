@@ -160,10 +160,6 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ video, onClose }) => {
         <div className="p-6 bg-white">
           <div className="mb-6">
             <h2 className="text-2xl font-serif font-semibold text-gray-800 mb-2">{video.title}</h2>
-            <div className="inline-block px-3 py-1 bg-indigo-100 text-indigo-800 text-sm rounded-full mb-3">
-              {video.concept}
-            </div>
-            <p className="text-gray-600">{video.description}</p>
           </div>
 
           <div className="flex items-center gap-4 justify-end border-t pt-4">

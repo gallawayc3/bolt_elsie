@@ -1,7 +1,11 @@
 import React from 'react';
 import { BookOpen, Search } from 'lucide-react';
 
-const Header: React.FC = () => {
+interface HeaderProps {
+  onSearch: (query: string) => void;
+}
+
+const Header: React.FC<HeaderProps> = ({ onSearch }) => {
   return (
     <header className="bg-gradient-to-r from-indigo-900 to-indigo-700 text-white py-6 px-4 md:px-8 lg:px-12">
       <div className="max-w-7xl mx-auto">
@@ -18,6 +22,7 @@ const Header: React.FC = () => {
             <input
               type="text"
               placeholder="Search concepts..."
+              onChange={(e) => onSearch(e.target.value)}
               className="bg-indigo-800 bg-opacity-50 border border-indigo-600 rounded-full py-2 px-4 pr-10 text-white placeholder-indigo-300 focus:outline-none focus:ring-2 focus:ring-indigo-400 w-60"
             />
             <Search size={18} className="absolute right-3 text-indigo-300" />

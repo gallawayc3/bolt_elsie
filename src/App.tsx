@@ -7,6 +7,7 @@ import { Video } from './types';
 
 function App() {
   const [selectedVideo, setSelectedVideo] = useState<Video | null>(null);
+  const [searchQuery, setSearchQuery] = useState('');
 
   const handleVideoSelect = (video: Video) => {
     setSelectedVideo(video);
@@ -16,9 +17,19 @@ function App() {
     setSelectedVideo(null);
   };
 
+  const handleSearch = (query: string) => {
+    setSearchQuery(query.toLowerCase());
+  };
+
+  const filteredVideos = videos.filter(video => 
+    video.title.toLowerCase().includes(searchQuery) ||
+    video.concept.toLowerCase().includes(searchQuery) ||
+    video.description.toLowerCase().includes(searchQuery)
+  );
+
   return (
     <div className="min-h-screen bg-gray-50">
-      <Header />
+      <Header onSearch={handleSearch} />
       
       <main className="max-w-7xl mx-auto px-4 py-8 md:px-8 lg:px-12">
         <div className="mb-8">
@@ -31,7 +42,7 @@ function App() {
         </div>
         
         <VideoGrid 
-          videos={videos} 
+          videos={filteredVideos} 
           onVideoSelect={handleVideoSelect} 
         />
       </main>

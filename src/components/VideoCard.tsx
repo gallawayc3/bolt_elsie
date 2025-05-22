@@ -36,9 +36,6 @@ const VideoCard: React.FC<VideoCardProps> = ({ video, onClick }) => {
       </div>
       <div className="p-4">
         <h3 className="font-serif text-lg font-semibold text-gray-800 mb-1">{video.title}</h3>
-        <div className="inline-block px-3 py-1 bg-indigo-100 text-indigo-800 text-xs rounded-full mb-2">
-          {video.concept}
-        </div>
         <p className="text-gray-600 text-sm line-clamp-2">{video.description}</p>
       </div>
     </div>

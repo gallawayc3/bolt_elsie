@@ -97,8 +97,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ video, onClose }) => {
   return (
     <div className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4 md:p-8">
       <div 
-        ref={containerRef}
-        className="relative w-full max-w-4xl bg-black rounded-lg overflow-hidden shadow-2xl"
+        className="relative w-full max-w-4xl bg-white rounded-lg overflow-hidden shadow-2xl"
       >
         <button 
           onClick={onClose}
@@ -108,7 +107,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ video, onClose }) => {
           <X size={24} />
         </button>
         
-        <div className="relative">
+        <div ref={containerRef} className="relative bg-black">
           <video 
             ref={videoRef} 
             className="w-full"
@@ -118,12 +117,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ video, onClose }) => {
             Your browser does not support the video tag.
           </video>
           
-          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
-            <div className="mb-3">
-              <h2 className="text-white text-xl md:text-2xl font-serif mb-1">{video.title}</h2>
-              <p className="text-gray-300 text-sm">{video.concept}</p>
-            </div>
-            
+          <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 p-4">
             <div 
               className="h-1 bg-gray-700 rounded-full mb-3 cursor-pointer"
               onClick={handleProgressClick}
@@ -152,36 +146,47 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ video, onClose }) => {
                 </button>
               </div>
               
-              <div className="flex items-center gap-4">
-                <button
-                  onClick={() => handleFeedback(true)}
-                  className={`flex items-center gap-2 px-3 py-1.5 rounded-full transition-colors ${
-                    helpful === true ? 'bg-green-500 text-white' : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
-                  }`}
-                  aria-label="Mark as helpful"
-                >
-                  <ThumbsUp size={16} />
-                  <span className="text-sm">Helpful</span>
-                </button>
-                <button
-                  onClick={() => handleFeedback(false)}
-                  className={`flex items-center gap-2 px-3 py-1.5 rounded-full transition-colors ${
-                    helpful === false ? 'bg-red-500 text-white' : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
-                  }`}
-                  aria-label="Mark as not helpful"
-                >
-                  <ThumbsDown size={16} />
-                  <span className="text-sm">Not Helpful</span>
-                </button>
-                <button 
-                  onClick={toggleFullscreen}
-                  className="text-white hover:text-indigo-300 transition-colors ml-2"
-                  aria-label={isFullscreen ? "Exit fullscreen" : "Enter fullscreen"}
-                >
-                  {isFullscreen ? <Minimize size={20} /> : <Maximize size={20} />}
-                </button>
-              </div>
+              <button 
+                onClick={toggleFullscreen}
+                className="text-white hover:text-indigo-300 transition-colors"
+                aria-label={isFullscreen ? "Exit fullscreen" : "Enter fullscreen"}
+              >
+                {isFullscreen ? <Minimize size={20} /> : <Maximize size={20} />}
+              </button>
             </div>
+          </div>
+        </div>
+
+        <div className="p-6 bg-white">
+          <div className="mb-6">
+            <h2 className="text-2xl font-serif font-semibold text-gray-800 mb-2">{video.title}</h2>
+            <div className="inline-block px-3 py-1 bg-indigo-100 text-indigo-800 text-sm rounded-full mb-3">
+              {video.concept}
+            </div>
+            <p className="text-gray-600">{video.description}</p>
+          </div>
+
+          <div className="flex items-center gap-4 justify-end border-t pt-4">
+            <button
+              onClick={() => handleFeedback(true)}
+              className={`flex items-center gap-2 px-4 py-2 rounded-full transition-colors ${
+                helpful === true ? 'bg-green-500 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              }`}
+              aria-label="Mark as helpful"
+            >
+              <ThumbsUp size={18} />
+              <span>Helpful</span>
+            </button>
+            <button
+              onClick={() => handleFeedback(false)}
+              className={`flex items-center gap-2 px-4 py-2 rounded-full transition-colors ${
+                helpful === false ? 'bg-red-500 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              }`}
+              aria-label="Mark as not helpful"
+            >
+              <ThumbsDown size={18} />
+              <span>Not Helpful</span>
+            </button>
           </div>
         </div>
       </div>
